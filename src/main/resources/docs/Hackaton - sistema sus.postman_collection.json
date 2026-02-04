@@ -1,381 +1,393 @@
 {
-	"info": {
-		"_postman_id": "88dc53f7-0c5b-4eae-8198-454cac929714",
-		"name": "Hackaton - sistema sus",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "1827882",
-		"_collection_link": "https://www.postman.com/dark-moon-236306/workspace/fiap-team-35/collection/1827882-88dc53f7-0c5b-4eae-8198-454cac929714?action=share&source=collection_link&creator=1827882"
-	},
-	"item": [
-		{
-			"name": "Estabelecimento de saúde",
-			"item": [
-				{
-					"name": "Estabelecimento",
-					"item": [
-						{
-							"name": "Cadastrar",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"nome\": \"Centro de Especialidades Odontológicas - CEO\",\r\n    \"email\": \"ceo@saude.gov.br\",\r\n    \"cnes\": \"7272146\",\r\n    \"dadosEndereco\": {\r\n        \"cidade\": \"Magé\",\r\n        \"cep\": \"25920000\",\r\n        \"bairro\": \"Vila Nova\",\r\n        \"endereco\": \"Praça da Saúde, 10\",\r\n        \"estado\": \"Rio de Janeiro\",\r\n        \"numero\": 10,\r\n        \"complemento\": \"Entrada lateral\",\r\n        \"semNumero\": false\r\n      }\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:8080/estabelecimento-saude/estabelecimentos",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"estabelecimento-saude",
-										"estabelecimentos"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Buscar por id",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"pm.collectionVariables.set(\"id\", \"a1648aeb-2d53-4015-82f2-fd8cff248127\");"
-										],
-										"type": "text/javascript",
-										"packages": {},
-										"requests": {}
-									}
-								}
-							],
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:8080/estabelecimento-saude/estabelecimentos/{{id}}",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"estabelecimento-saude",
-										"estabelecimentos",
-										"{{id}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Buscar todos",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"pm.collectionVariables.set(\"pagina\", 4);"
-										],
-										"type": "text/javascript",
-										"packages": {},
-										"requests": {}
-									}
-								}
-							],
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:8080/estabelecimento-saude/estabelecimentos?pagina={{pagina}}",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"estabelecimento-saude",
-										"estabelecimentos"
-									],
-									"query": [
-										{
-											"key": "pagina",
-											"value": "{{pagina}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Atualizar endereço",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"pm.collectionVariables.set(\"id\", \"a1648aeb-2d53-4015-82f2-fd8cff248127\");"
-										],
-										"type": "text/javascript",
-										"packages": {},
-										"requests": {}
-									}
-								}
-							],
-							"request": {
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"cidade\" : \"Nome da cidade\",\r\n    \"cep\" : \"24455000\",\r\n    \"bairro\" : \"Nome do bairro\",\r\n    \"endereco\" : \"Descrição do endereço\",\r\n    \"estado\" : \"Rio dea Janeiro\",\r\n    \"numero\": 7,\r\n    \"complemento\" : \"Complemento do endereço\",\r\n    \"semNumero\" : false\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:8080/estabelecimento-saude/estabelecimentos/{{id}}/endereco",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"estabelecimento-saude",
-										"estabelecimentos",
-										"{{id}}",
-										"endereco"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Atualizar nome",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"pm.collectionVariables.set(\"id\", \"a1648aeb-2d53-4015-82f2-fd8cff248127\");"
-										],
-										"type": "text/javascript",
-										"packages": {},
-										"requests": {}
-									}
-								}
-							],
-							"request": {
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"nome\" : \"Hospital Municipal Bom Jesus\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:8080/estabelecimento-saude/estabelecimentos/{{id}}/nome",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"estabelecimento-saude",
-										"estabelecimentos",
-										"{{id}}",
-										"nome"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Atualizar email",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"pm.collectionVariables.set(\"id\", \"a1648aeb-2d53-4015-82f2-fd8cff248127\");"
-										],
-										"type": "text/javascript",
-										"packages": {},
-										"requests": {}
-									}
-								}
-							],
-							"request": {
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"email\" : \"hospital.bomjesus@saude.gov.br\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:8080/estabelecimento-saude/estabelecimentos/{{id}}/email",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"estabelecimento-saude",
-										"estabelecimentos",
-										"{{id}}",
-										"email"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Inativar",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"pm.collectionVariables.set(\"id\", \"a1648aeb-2d53-4015-82f2-fd8cff248127\");"
-										],
-										"type": "text/javascript",
-										"packages": {},
-										"requests": {}
-									}
-								}
-							],
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:8080/estabelecimento-saude/estabelecimentos/{{id}}/status",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"estabelecimento-saude",
-										"estabelecimentos",
-										"{{id}}",
-										"status"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Ativar",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"pm.collectionVariables.set(\"id\", \"a1648aeb-2d53-4015-82f2-fd8cff248127\");"
-										],
-										"type": "text/javascript",
-										"packages": {},
-										"requests": {}
-									}
-								}
-							],
-							"request": {
-								"method": "PATCH",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:8080/estabelecimento-saude/estabelecimentos/{{id}}/status",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"estabelecimento-saude",
-										"estabelecimentos",
-										"{{id}}",
-										"status"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				}
-			]
-		}
-	],
-	"variable": [
-		{
-			"key": "pagina",
-			"value": ""
-		},
-		{
-			"key": "id",
-			"value": ""
-		},
-		{
-			"key": "matricula",
-			"value": ""
-		}
-	]
+  "info": {
+    "_postman_id": "88dc53f7-0c5b-4eae-8198-454cac929714",
+    "name": "Hackaton - sistema sus",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "1827882",
+    "_collection_link": "https://go.postman.co/collection/1827882-88dc53f7-0c5b-4eae-8198-454cac929714?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Estabelecimento de saúde",
+      "item": [
+        {
+          "name": "Estabelecimento",
+          "item": [
+            {
+              "name": "Cadastrar",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"Centro de Especialidades Odontológicas - CEO\",\r\n    \"email\": \"ceo@saude.gov.br\",\r\n    \"cnes\": \"7272146\",\r\n    \"dadosEndereco\": {\r\n        \"cidade\": \"Magé\",\r\n        \"cep\": \"25920000\",\r\n        \"bairro\": \"Vila Nova\",\r\n        \"endereco\": \"Praça da Saúde, 10\",\r\n        \"estado\": \"Rio de Janeiro\",\r\n        \"numero\": 10,\r\n        \"complemento\": \"Entrada lateral\",\r\n        \"semNumero\": false\r\n      },\r\n      \"idResponsavel\": \"4a8aafa8-0707-4697-b092-b40aa967d151\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/estabelecimento-saude/estabelecimentos",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "estabelecimento-saude",
+                    "estabelecimentos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Buscar por id",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "pm.collectionVariables.set(\"id\", \"c6f418e8-5362-4b5c-a0d4-ecb069b36388\");"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/estabelecimento-saude/estabelecimentos/{{id}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "estabelecimento-saude",
+                    "estabelecimentos",
+                    "{{id}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Buscar todos",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "pm.collectionVariables.set(\"pagina\", 1);"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/estabelecimento-saude/estabelecimentos?pagina={{pagina}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "estabelecimento-saude",
+                    "estabelecimentos"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagina",
+                      "value": "{{pagina}}"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Atualizar endereço",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "pm.collectionVariables.set(\"id\", \"a1648aeb-2d53-4015-82f2-fd8cff248127\");"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"cidade\" : \"Nome da cidade\",\r\n    \"cep\" : \"24455000\",\r\n    \"bairro\" : \"Nome do bairro\",\r\n    \"endereco\" : \"Descrição do endereço\",\r\n    \"estado\" : \"Rio dea Janeiro\",\r\n    \"numero\": 7,\r\n    \"complemento\" : \"Complemento do endereço\",\r\n    \"semNumero\" : false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/estabelecimento-saude/estabelecimentos/{{id}}/endereco",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "estabelecimento-saude",
+                    "estabelecimentos",
+                    "{{id}}",
+                    "endereco"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Atualizar nome",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "pm.collectionVariables.set(\"id\", \"a1648aeb-2d53-4015-82f2-fd8cff248127\");"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\" : \"Hospital Municipal Bom Jesus\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/estabelecimento-saude/estabelecimentos/{{id}}/nome",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "estabelecimento-saude",
+                    "estabelecimentos",
+                    "{{id}}",
+                    "nome"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Atualizar email",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "pm.collectionVariables.set(\"id\", \"a1648aeb-2d53-4015-82f2-fd8cff248127\");"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\" : \"hospital.bomjesus@saude.gov.br\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/estabelecimento-saude/estabelecimentos/{{id}}/email",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "estabelecimento-saude",
+                    "estabelecimentos",
+                    "{{id}}",
+                    "email"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Inativar",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "pm.collectionVariables.set(\"id\", \"a1648aeb-2d53-4015-82f2-fd8cff248127\");"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/estabelecimento-saude/estabelecimentos/{{id}}/status",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "estabelecimento-saude",
+                    "estabelecimentos",
+                    "{{id}}",
+                    "status"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Ativar",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      "pm.collectionVariables.set(\"id\", \"a1648aeb-2d53-4015-82f2-fd8cff248127\");"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/estabelecimento-saude/estabelecimentos/{{id}}/status",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "estabelecimento-saude",
+                    "estabelecimentos",
+                    "{{id}}",
+                    "status"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "pagina",
+      "value": ""
+    },
+    {
+      "key": "id",
+      "value": ""
+    },
+    {
+      "key": "matricula",
+      "value": ""
+    },
+    {
+      "key": "baseUrl",
+      "value": ""
+    }
+  ]
 }

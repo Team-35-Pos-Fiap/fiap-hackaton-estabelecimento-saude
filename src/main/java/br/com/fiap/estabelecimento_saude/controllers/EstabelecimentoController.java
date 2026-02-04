@@ -8,6 +8,7 @@ import br.com.fiap.estabelecimento_saude.entities.record.request.NomeRecordReque
 import br.com.fiap.estabelecimento_saude.entities.record.request.EstabelecimentoRecordRequest;
 import br.com.fiap.estabelecimento_saude.entities.record.response.EstabelecimentoRecordPaginacaoResponse;
 import br.com.fiap.estabelecimento_saude.entities.record.response.EstabelecimentoRecordResponse;
+import br.com.fiap.estabelecimento_saude.entities.record.response.EstabelecimentoRecordResponseUsuario;
 import br.com.fiap.estabelecimento_saude.services.interfaces.IEstabelecimentoService;
 import br.com.fiap.estabelecimento_saude.utils.MensagensUtil;
 import jakarta.validation.Valid;
@@ -60,7 +61,7 @@ public class EstabelecimentoController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<EstabelecimentoRecordResponse> buscarEstabelecimentoPorId(@PathVariable @NotNull @Valid UUID id) {
+	public ResponseEntity<EstabelecimentoRecordResponseUsuario> buscarEstabelecimentoPorId(@PathVariable @NotNull @Valid UUID id) {
 		log.info("buscarEstabelecimentoPorId():id {}", id);
 		
 		return ResponseEntity.ok().body(estabelecimentoService.buscarPorId(id));

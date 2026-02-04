@@ -19,4 +19,5 @@ public class EstabelecimentoDomain {
 	private LocalDateTime dataAtualizacao;
 	private Boolean isAtivo;
 	private EnderecoDomain dadosEndereco;
+    private UUID idResponsavel;
 }

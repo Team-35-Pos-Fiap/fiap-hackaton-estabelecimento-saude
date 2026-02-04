@@ -8,4 +8,5 @@ public record EstabelecimentoRecordResponse(UUID id,
                                             String nome,
                                             String email,
                                             Boolean ativo,
-                                            EnderecoRecordRequest dadosEndereco) { }
+                                            EnderecoRecordRequest dadosEndereco,
+                                            UUID idResponsavel) { }

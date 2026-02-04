@@ -3,9 +3,7 @@ package br.com.fiap.estabelecimento_saude.mappers;
 import br.com.fiap.estabelecimento_saude.entities.db.EstabelecimentoEntity;
 import br.com.fiap.estabelecimento_saude.entities.domain.EstabelecimentoDomain;
 import br.com.fiap.estabelecimento_saude.entities.record.request.EstabelecimentoRecordRequest;
-import br.com.fiap.estabelecimento_saude.entities.record.response.PaginacaoRecordResponse;
-import br.com.fiap.estabelecimento_saude.entities.record.response.EstabelecimentoRecordPaginacaoResponse;
-import br.com.fiap.estabelecimento_saude.entities.record.response.EstabelecimentoRecordResponse;
+import br.com.fiap.estabelecimento_saude.entities.record.response.*;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +25,8 @@ public abstract class EstabelecimentoMapper {
                 LocalDateTime.now(),
                 null,
                 true,
-                EnderecoMapper.toDadosEndereco(estabelecimento.dadosEndereco()));
+                EnderecoMapper.toDadosEndereco(estabelecimento.dadosEndereco()),
+                estabelecimento.idResponsavel());
 	}
 
 	// 2 - domain -> entity
@@ -41,7 +40,8 @@ public abstract class EstabelecimentoMapper {
                 estabelecimento.getDataCriacao(),
                 estabelecimento.getDataAtualizacao(),
                 estabelecimento.getIsAtivo(),
-                EnderecoMapper.toDadosEndereco(estabelecimento.getDadosEndereco()));
+                EnderecoMapper.toDadosEndereco(estabelecimento.getDadosEndereco()),
+                estabelecimento.getIdResponsavel());
 	}
 	
 	// entity -> domain -> record
@@ -56,18 +56,29 @@ public abstract class EstabelecimentoMapper {
                 estabelecimento.getDataCriacao(),
                 estabelecimento.getDataAtualizacao(),
                 estabelecimento.getIsAtivo(),
-                EnderecoMapper.toDadosEndereco(estabelecimento.getDadosEndereco()));
+                EnderecoMapper.toDadosEndereco(estabelecimento.getDadosEndereco()),
+                estabelecimento.getIdResponsavel());
 	}
 	
 	// 4 - domain -> record
 	
-	public static EstabelecimentoRecordResponse toEstabelecimentoRecord(EstabelecimentoDomain estabelecimento) {
-		return new EstabelecimentoRecordResponse(estabelecimento.getId(),
-										 estabelecimento.getNome(), 
-										 estabelecimento.getEmail(),
-										 estabelecimento.getIsAtivo(),
-										 EnderecoMapper.toDadosEnderecoRecord(estabelecimento.getDadosEndereco()));
+	public static EstabelecimentoRecordResponseUsuario toEstabelecimentoRecord(EstabelecimentoDomain estabelecimento, UsuarioDtoResponse usuario) {
+		return new EstabelecimentoRecordResponseUsuario(estabelecimento.getId(),
+            estabelecimento.getNome(),
+            estabelecimento.getEmail(),
+            estabelecimento.getIsAtivo(),
+            EnderecoMapper.toDadosEnderecoRecord(estabelecimento.getDadosEndereco()),
+            usuario);
 	}
+
+    public static EstabelecimentoRecordResponse toEstabelecimentoRecord(EstabelecimentoDomain estabelecimento) {
+        return new EstabelecimentoRecordResponse(estabelecimento.getId(),
+                estabelecimento.getNome(),
+                estabelecimento.getEmail(),
+                estabelecimento.getIsAtivo(),
+                EnderecoMapper.toDadosEnderecoRecord(estabelecimento.getDadosEndereco()),
+                estabelecimento.getIdResponsavel());
+    }
 
 	public static EstabelecimentoRecordPaginacaoResponse toEstabelecimento(Page<EstabelecimentoEntity> dados) {
 		List<EstabelecimentoRecordResponse> estabelecimentos = dados.toList()

@@ -17,8 +17,10 @@ public class EstabelecimentoEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
+
 	private String nome;
-	@Column(unique = true)
+
+    @Column(unique = true)
 	private String email;
 
     @Column(unique = true)
@@ -66,4 +68,6 @@ public class EstabelecimentoEntity {
 	private LocalDateTime getDataAtual() {
 		return LocalDateTime.now();
 	}
+
+    private UUID idResponsavel;
 }
