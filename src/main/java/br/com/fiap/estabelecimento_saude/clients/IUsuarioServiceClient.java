@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.UUID;
 
 @FeignClient(
-    name = "hackaton-usuarios",
-    url = "${services.hackaton-usuarios:}"
+    name = "hackaton-usuarios"
 )
 public interface IUsuarioServiceClient {
     @GetMapping("/hackaton-usuarios/usuarios/{id}")

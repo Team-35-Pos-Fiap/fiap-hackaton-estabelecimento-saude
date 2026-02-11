@@ -30,6 +30,7 @@ spring:
 server:
   servlet:
     context-path: /estabelecimento-saude
+  port: 0
 
 eureka:
   client:
