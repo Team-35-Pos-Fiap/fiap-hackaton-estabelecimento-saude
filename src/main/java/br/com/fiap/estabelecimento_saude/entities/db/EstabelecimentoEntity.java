@@ -20,7 +20,7 @@ public class EstabelecimentoEntity {
 
 	private String nome;
 
-    @Column(unique = true)
+    @Column(unique = false)
 	private String email;
 
     @Column(unique = true)

@@ -30,7 +30,7 @@ spring:
 server:
   servlet:
     context-path: /estabelecimento-saude
-  port: 8081
+  port: 8098
 
 eureka:
   client:
